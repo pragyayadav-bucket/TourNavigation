@@ -46,11 +46,11 @@ class MainActivity : ComponentActivity() {
 
 @Composable
 fun composeGoogleMap() {
-    val singapore = LatLng(1.35, 103.87)
     val sydney = LatLng(-33.852, 151.211)
+    val amsterdamTomTom = LatLng(52.37732, 4.90976)
 
     val cameraPositionState = rememberCameraPositionState {
-        position = CameraPosition.fromLatLngZoom(singapore, 10f)
+        position = CameraPosition.fromLatLngZoom(amsterdamTomTom, 10f)
     }
 
     Box(Modifier.fillMaxSize()) {
@@ -60,8 +60,8 @@ fun composeGoogleMap() {
         ) {
             MapMarker(
                 context = LocalContext.current,
-                position = singapore,
-                title = "Marker in Singapore",
+                position = amsterdamTomTom,
+                title = "Marker in Amsterdam",
                 iconResourceId = R.drawable.ic_pin_background
             )
             MapMarker(
@@ -95,6 +95,7 @@ fun MapMarker(
     Marker(
         position = position,
         title = title,
+        draggable = true,
         //icon = icon,
     )
 }
