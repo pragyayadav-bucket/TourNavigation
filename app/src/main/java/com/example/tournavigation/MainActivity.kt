@@ -6,16 +6,16 @@ import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
-import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
-import androidx.compose.runtime.Composable
+import androidx.compose.foundation.layout.*
+import androidx.compose.material.*
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Search
+import androidx.compose.runtime.*
+import androidx.compose.ui.Alignment.Companion.TopStart
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.compose.ui.unit.dp
 import androidx.core.content.ContextCompat
 import com.example.tournavigation.ui.theme.TourNavigationTheme
 import com.google.android.gms.maps.CameraUpdateFactory
@@ -72,12 +72,20 @@ fun composeGoogleMap() {
             )
         }
 
-        Button(
-            onClick = {
-                cameraPositionState.move(CameraUpdateFactory.newLatLng(sydney))
-            }
+        Column(
+            verticalArrangement = Arrangement.spacedBy(8.dp),
+            modifier = Modifier.align(TopStart)
         ) {
-            Text(text = "Animate camera to Sydney")
+            Button(
+                modifier = Modifier.padding(16.dp),
+                onClick = {
+                    cameraPositionState.move(CameraUpdateFactory.newLatLng(sydney))
+                }
+            ) {
+                Text(text = "Animate camera to Sydney")
+            }
+
+            SearchBar()
         }
     }
 }
@@ -97,6 +105,19 @@ fun MapMarker(
         title = title,
         draggable = true,
         //icon = icon,
+    )
+}
+
+@Composable
+fun SearchBar() {
+    var text by remember { mutableStateOf("") }
+
+    TextField(
+        value = text,
+        onValueChange = { text = it },
+        label = { Text("Search") },
+        modifier = Modifier.fillMaxWidth(0.3f).padding(16.dp),
+        leadingIcon = { Icon(Icons.Filled.Search, contentDescription = null) },
     )
 }
 
