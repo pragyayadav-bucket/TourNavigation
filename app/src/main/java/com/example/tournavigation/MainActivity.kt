@@ -8,10 +8,10 @@ import androidx.activity.compose.setContent
 import androidx.annotation.DrawableRes
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.fillMaxSize
-import androidx.compose.material.Button
-import androidx.compose.material.MaterialTheme
-import androidx.compose.material.Surface
-import androidx.compose.material.Text
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.platform.LocalContext
@@ -35,9 +35,9 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = MaterialTheme.colorScheme.background
                 ) {
-                    composeGoogleMap()
+                    ComposeGoogleMap()
                 }
             }
         }
@@ -45,7 +45,7 @@ class MainActivity : ComponentActivity() {
 }
 
 @Composable
-fun composeGoogleMap() {
+fun ComposeGoogleMap() {
     val sydney = LatLng(-33.852, 151.211)
     val amsterdamTomTom = LatLng(52.37732, 4.90976)
 
@@ -127,6 +127,6 @@ fun bitmapDescriptorFromVector(
 fun DefaultPreview() {
     TourNavigationTheme {
        // Greeting("Android")
-        composeGoogleMap()
+        ComposeGoogleMap()
     }
 }
