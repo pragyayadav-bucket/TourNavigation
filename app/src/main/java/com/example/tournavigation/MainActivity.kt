@@ -35,7 +35,7 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colorScheme.background
+                    color = MaterialTheme.colorScheme.background,
                 ) {
                     ComposeGoogleMap()
                 }
@@ -56,7 +56,7 @@ fun ComposeGoogleMap() {
     Box(Modifier.fillMaxSize()) {
         GoogleMap(
             modifier = Modifier.matchParentSize(),
-            cameraPositionState = cameraPositionState
+            cameraPositionState = cameraPositionState,
         ) {
             MapMarker(
                 context = LocalContext.current,
@@ -75,7 +75,7 @@ fun ComposeGoogleMap() {
         Button(
             onClick = {
                 cameraPositionState.move(CameraUpdateFactory.newLatLng(sydney))
-            }
+            },
         ) {
             Text(text = "Animate camera to Sydney")
         }
@@ -87,7 +87,7 @@ fun MapMarker(
     context: Context,
     position: LatLng,
     title: String,
-    @DrawableRes iconResourceId: Int
+    @DrawableRes iconResourceId: Int,
 ) {
     val icon = bitmapDescriptorFromVector(context, iconResourceId)
     Marker(
@@ -101,7 +101,7 @@ fun MapMarker(
 // https://www.boltuix.com/2022/11/add-custom-marker-to-google-maps-in.html
 fun bitmapDescriptorFromVector(
     context: Context,
-    vectorResId: Int
+    vectorResId: Int,
 ): BitmapDescriptor? {
     // retrieve the actual drawable
     val drawable = ContextCompat.getDrawable(context, vectorResId) ?: return null
@@ -109,7 +109,7 @@ fun bitmapDescriptorFromVector(
     val bm = Bitmap.createBitmap(
         drawable.intrinsicWidth,
         drawable.intrinsicHeight,
-        Bitmap.Config.ARGB_8888
+        Bitmap.Config.ARGB_8888,
     )
 
     // draw it onto the bitmap
