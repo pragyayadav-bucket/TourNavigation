@@ -62,13 +62,13 @@ fun ComposeGoogleMap() {
                 context = LocalContext.current,
                 position = amsterdamTomTom,
                 title = "Marker in Amsterdam",
-                iconResourceId = R.drawable.ic_pin_background
+                iconResourceId = R.drawable.ic_pin_background,
             )
             MapMarker(
                 context = LocalContext.current,
                 position = sydney,
                 title = "Marker in Sydney",
-                iconResourceId = R.drawable.ic_pin_background
+                iconResourceId = R.drawable.ic_pin_background,
             )
         }
 
@@ -94,7 +94,7 @@ fun MapMarker(
         position = position,
         title = title,
         draggable = true,
-        //icon = icon,
+        // icon = icon,
     )
 }
 
