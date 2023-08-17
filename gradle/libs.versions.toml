@@ -1,0 +1,45 @@
+[versions]
+compose = "1.2.0"
+gradle = "7.4.2"
+kotlin = "1.8.10"
+ktlint = "11.5.1"
+lifecycle = "2.4.1"
+material = "1.0.1"
+maps-platform = "2.0.1"
+
+[libraries]
+android-coreKtx = "androidx.core:core-ktx:1.9.0"
+lifecycle-runtimeKtx = { module = "androidx.lifecycle:lifecycle-runtime-ktx", version.ref = "lifecycle" }
+
+compose-activity = "androidx.activity:activity-compose:1.6.1"
+compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
+compose-material = "com.google.android.material:material:1.6.1"
+compose-material3 = { module = "androidx.compose.material3:material3", version.ref = "material" }
+compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
+compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
+
+maps-compose = "com.google.maps.android:maps-compose:1.0.0"
+maps-playServices = "com.google.android.gms:play-services-maps:18.0.2"
+
+test-junit = "junit:junit:4.13.2"
+android-test-junit = "androidx.test.ext:junit:1.1.5"
+android-test-espresso = "androidx.test.espresso:espresso-core:3.5.1"
+android-test-composeJunit = "androidx.compose.ui:ui-test-junit4:1.2.0"
+android-test-composeManifest = "androidx.compose.ui:ui-test-manifest:1.2.0"
+
+[bundles]
+compose = [
+    "compose-activity",
+    "compose-foundation",
+    "compose-material",
+    "compose-material3",
+    "compose-ui",
+    "compose-ui-tooling",
+]
+
+[plugins]
+android-application = { id = "com.android.application", version.ref = "gradle" }
+android-library = { id = "com.android.library", version.ref = "gradle" }
+kotlin-android = { id = "org.jetbrains.kotlin.android", version.ref = "kotlin" }
+ktlint = { id = "org.jlleitschuh.gradle.ktlint", version.ref = "ktlint" }
+mapsSecretsPlugin = { id = "com.google.android.libraries.mapsplatform.secrets-gradle-plugin", version.ref = "maps-platform" }

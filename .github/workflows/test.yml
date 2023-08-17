@@ -1,0 +1,54 @@
+name: Test
+
+on:
+  push:
+
+jobs:
+  static:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Grant execute permission for gradlew
+        run: chmod +x gradlew
+
+      - name: Setup local.defaults.properties
+        env:
+          MAPS_API_KEY: ${{ secrets.MAPS_API_KEY }}
+        run: sed "s|MAPS_API_KEY|$MAPS_API_KEY|g;" local.defaults.properties > local.defaults.properties
+
+      - name: Run ktlint
+        run: ./gradlew ktlintCheck
+      - name: Upload ktlint artifact
+        uses: actions/upload-artifact@v3
+        if: failure()
+        with:
+          name: ktlint
+          path: '*/build/reports/ktlint/'
+
+  tests:
+    runs-on: ubuntu-latest
+
+    permissions:
+      checks: write
+      pull-requests: write
+
+    steps:
+      - uses: actions/checkout@v3
+      - name: set up JDK 11
+        uses: actions/setup-java@v3
+        with:
+          java-version: '11'
+          distribution: 'adopt'
+      - name: Run jUnit tests
+        run: ./gradlew test
+      - name: Publish Unit Test Results
+        uses: EnricoMi/publish-unit-test-result-action@v2
+        if: always()
+        with:
+          files: '*/build/test-results/**/*.xml'
