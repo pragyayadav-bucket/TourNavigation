@@ -5,11 +5,14 @@ import android.content.pm.PackageManager
 import android.os.Bundle
 import androidx.activity.ComponentActivity
 import androidx.activity.compose.setContent
-import androidx.activity.result.contract.ActivityResultContracts
-import androidx.activity.viewModels
-import androidx.compose.foundation.layout.*
-import androidx.compose.material.*
-import androidx.compose.runtime.*
+import androidx.annotation.DrawableRes
+import androidx.compose.foundation.layout.Box
+import androidx.compose.foundation.layout.fillMaxSize
+import androidx.compose.material3.Button
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Surface
+import androidx.compose.material3.Text
+import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.core.content.ContextCompat
@@ -41,9 +44,10 @@ class MainActivity : ComponentActivity() {
                 // A surface container using the 'background' color from the theme
                 Surface(
                     modifier = Modifier.fillMaxSize(),
-                    color = MaterialTheme.colors.background
+                    color = MaterialTheme.colorScheme.background,
                 ) {
-                    ComposeMapScreen( mapState = viewModel.state.value)
+                    //ComposeGoogleMap()
+                    ComposeMapScreen(mapState = viewModel.state.value)
                 }
             }
         }
@@ -56,11 +60,13 @@ class MainActivity : ComponentActivity() {
         ) == PackageManager.PERMISSION_GRANTED -> {
             viewModel.getDeviceLocation(fusedLocationProviderClient)
         }
+
         else -> {
             requestPermissionLauncher.launch(Manifest.permission.ACCESS_FINE_LOCATION)
         }
     }
 }
+
 
 @Preview(showBackground = true)
 @Composable
