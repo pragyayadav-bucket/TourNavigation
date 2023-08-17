@@ -6,12 +6,12 @@ plugins {
 
 android {
     namespace 'com.example.tournavigation'
-    compileSdk 33
+    compileSdk 34
 
     defaultConfig {
         applicationId "com.example.tournavigation"
         minSdk 24
-        targetSdk 33
+        targetSdk 34
         versionCode 1
         versionName "1.0"
 
@@ -73,4 +73,13 @@ dependencies {
 
     // FuseLocation
      implementation "com.google.android.gms:play-services-location:21.0.1"
+
+    //Koin
+    implementation "io.insert-koin:koin-core:3.4.0"
+    implementation "io.insert-koin:koin-android:3.4.0"
+    //implementation "io.insert-koin:koin-androidx-viewmodel:3.4.0"
+    //implementation "io.insert-koin:koin-androidx-scope:3.4.0"
+    //implementation "io.insert-koin:koin-androidx-fragment:3.4.0"
+    implementation "io.insert-koin:koin-androidx-compose:3.4.0"
+
 }
