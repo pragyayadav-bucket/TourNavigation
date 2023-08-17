@@ -2,6 +2,7 @@
 compose = "1.2.0"
 gradle = "7.4.2"
 kotlin = "1.8.10"
+koin = "3.4.0"
 ktlint = "11.5.1"
 lifecycle = "2.4.1"
 material = "1.0.1"
@@ -18,8 +19,15 @@ compose-material3 = { module = "androidx.compose.material3:material3", version.r
 compose-ui = { module = "androidx.compose.ui:ui", version.ref = "compose" }
 compose-ui-tooling = { module = "androidx.compose.ui:ui-tooling", version.ref = "compose" }
 
+koin-core = { module = "io.insert-koin:koin-core", version.ref = "koin" }
+koin-android = { module = "io.insert-koin:koin-android", version.ref = "koin" }
+koin-androidCompose = { module = "io.insert-koin:koin-androidx-compose", version.ref = "koin" }
+
+kotlinLogging = { module = "io.github.microutils:kotlin-logging-jvm", version = "3.0.5"}
+
 maps-compose = "com.google.maps.android:maps-compose:1.0.0"
 maps-playServices = "com.google.android.gms:play-services-maps:18.0.2"
+location-playServices = "com.google.android.gms:play-services-location:19.0.1"
 
 test-junit = "junit:junit:4.13.2"
 android-test-junit = "androidx.test.ext:junit:1.1.5"
