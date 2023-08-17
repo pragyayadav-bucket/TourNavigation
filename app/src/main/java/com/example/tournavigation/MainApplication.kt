@@ -3,12 +3,12 @@ package com.example.tournavigation
 import android.app.Application
 import org.koin.core.context.startKoin
 
-class MainApplication: Application() {
-        override fun onCreate() {
-            super.onCreate()
+class MainApplication : Application() {
+    override fun onCreate() {
+        super.onCreate()
 
-            startKoin {
-                modules(appModel)
-            }
+        startKoin {
+            modules(appModel)
         }
+    }
 }

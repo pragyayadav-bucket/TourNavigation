@@ -18,13 +18,11 @@ import com.example.tournavigation.compose.ComposeMapScreen
 import com.example.tournavigation.ui.theme.TourNavigationTheme
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
-import mu.KotlinLogging
 
 class MainActivity : ComponentActivity() {
-    val logger = KotlinLogging.logger { }
     private val requestPermissionLauncher =
         registerForActivityResult(
-            ActivityResultContracts.RequestPermission()
+            ActivityResultContracts.RequestPermission(),
         ) { isGranted: Boolean ->
             if (isGranted) {
                 viewModel.getDeviceLocation(fusedLocationProviderClient)
@@ -44,7 +42,6 @@ class MainActivity : ComponentActivity() {
                     modifier = Modifier.fillMaxSize(),
                     color = MaterialTheme.colorScheme.background,
                 ) {
-                    //ComposeGoogleMap()
                     ComposeMapScreen(mapState = viewModel.state.value)
                 }
             }
@@ -54,7 +51,7 @@ class MainActivity : ComponentActivity() {
     private fun askPermissions() = when {
         ContextCompat.checkSelfPermission(
             this,
-            Manifest.permission.ACCESS_FINE_LOCATION
+            Manifest.permission.ACCESS_FINE_LOCATION,
         ) == PackageManager.PERMISSION_GRANTED -> {
             viewModel.getDeviceLocation(fusedLocationProviderClient)
         }
@@ -70,7 +67,6 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun DefaultPreview() {
     TourNavigationTheme {
-       // Greeting("Android")
-        //composeGoogleMap()
+        ComposeMapScreen(mapState = MapState(lastKnownLocation = null))
     }
 }

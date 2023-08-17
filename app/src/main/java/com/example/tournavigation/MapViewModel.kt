@@ -7,17 +7,17 @@ import androidx.lifecycle.ViewModel
 import com.google.android.gms.location.FusedLocationProviderClient
 import mu.KotlinLogging
 
-class MapViewModel: ViewModel() {
-    private val logger = KotlinLogging.logger {  }
+class MapViewModel : ViewModel() {
+    private val logger = KotlinLogging.logger { }
     val state: MutableState<MapState> = mutableStateOf(
         MapState(
             lastKnownLocation = null,
-        )
+        ),
     )
 
     @SuppressLint("MissingPermission")
     fun getDeviceLocation(
-        fusedLocationProviderClient: FusedLocationProviderClient
+        fusedLocationProviderClient: FusedLocationProviderClient,
     ) {
         try {
             val locationResult = fusedLocationProviderClient.lastLocation

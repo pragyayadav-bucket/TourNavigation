@@ -15,10 +15,10 @@ fun MapMarker(
     context: Context,
     position: LatLng,
     title: String,
-    @DrawableRes iconResourceId: Int
+    @DrawableRes iconResourceId: Int,
 ) {
     val icon = bitmapDescriptorFromVector(
-        context, iconResourceId
+        context, iconResourceId,
     )
     Marker(
         position = position,
@@ -41,7 +41,7 @@ fun bitmapDescriptorFromVector(
     val bm = Bitmap.createBitmap(
         drawable.intrinsicWidth,
         drawable.intrinsicHeight,
-        Bitmap.Config.ARGB_8888
+        Bitmap.Config.ARGB_8888,
     )
 
     // draw it onto the bitmap
