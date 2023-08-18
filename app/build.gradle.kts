@@ -59,6 +59,11 @@ dependencies {
     implementation(libs.android.coreKtx)
     implementation(libs.lifecycle.runtimeKtx)
     implementation(libs.bundles.compose)
+    implementation(libs.kotlinLogging)
+    implementation(libs.location.playServices)
+    implementation(libs.koin.android)
+    implementation(libs.koin.androidCompose)
+    implementation(libs.koin.core)
 
     testImplementation(libs.test.junit)
 
